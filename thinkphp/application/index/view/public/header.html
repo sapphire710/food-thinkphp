@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1343159_qo45xekm86b.css">
+    <link rel="stylesheet" href="__CSS_PATH__bootstrap.min.css">
+    <link rel="stylesheet" href="__CSS_PATH__animate.min.css">
+    <link rel="stylesheet" href="__CSS_PATH__public.css">
+
+    <title>[title]</title>
+</head>
+<style>
+    .navl{
+        padding:8px;
+    }
+    .navl img{
+        width:187px;
+        height:80px;
+    }
+</style>
+<body>
+
+<nav>
+    <div class="nav-box">
+        <div class="navl">
+            <img src="__IMG_PATH__common/车图标.png" alt="">
+        </div>
+        <ul class="navr">
+            <a href="/thinkphp/public/index.php/index/index/index?id=0">
+                <li style="{$id==0?'color:#ff6000;':''}">
+                    首页
+                </li>
+            </a>
+            {volist name='nav' id='vo'}
+            <a href="/thinkphp/public/index.php/index/category/index?id={$vo['id']}">
+                <li style="{$vo['id']==$id?'color:#ff6000;':''}">
+                    {$vo['nname']}
+                </li>
+            </a>
+            {/volist}
+        </ul>
+    </div>
+</nav>
+<!-- 顶部导航 结束 -->
+<!-- 屏幕滚动出现 开始 -->
+<nav class="xiala-nav" id="xia">
+    <div class="nav-box">
+        <div class="navl">
+            <img src="__IMG_PATH__common/车图标.png" alt="">
+        </div>
+        <ul class="navr navr2">
+            <a href="/thinkphp/public/index.php/index/index/index?id=0">
+                <li style="{$id==0?'color:#ff6000;':''}">
+                    首页
+                </li>
+            </a>
+            {volist name='nav' id='vo'}
+            <a href="/thinkphp/public/index.php/index/category/index?id={$vo['id']}">
+                <li style=" {$vo['id']==$id?'color:#ff6000;':''}width: 58px;margin: 0 25px 0 25px;">
+                    {$vo['nname']}
+                </li>
+            </a>
+            {/volist}
+        </ul>
+    </div>
+</nav>
+<!-- 屏幕滚动出现 结束 -->
+<!-- 屏幕缩小后出现的下拉列表 开始 -->
+<a href="#">
+    <div class="nav-list">
+        <div class="shouy">首页</div>
+        <div class="shouy-xiala">∨</div>
+    </div>
+</a>
+<ul class="xialakuang" style="display: none;">
+    <a href="/thinkphp/public/index.php/index/index/index?id=0">
+        <li style="{$id==0?'color:#ff6000;':''}">
+            首页
+        </li>
+    </a>
+    {volist name='nav' id='vo'}
+    <a href="/thinkphp/public/index.php/index/category/index?id={$vo['id']}">
+        <li class="xiala-li"  style="{$vo['id']==$id?'color:#ff6000;':''}">
+            {$vo['nname']}
+        </li>
+    </a>
+    {/volist}
+</ul>
+<!-- 屏幕缩小后出现的下拉列表 结束 -->
+
+<!-- 导航结束 -->

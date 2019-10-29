@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>查看分类</title>
+    <link rel="stylesheet" href="/thinkphp/public/static/css/layui.css">
+    <script src="/thinkphp/public/static/layui.js"></script>
+</head>
+<body>
+
+<table id="demo" lay-filter="test"></table>
+
+</body>
+</html>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<script>
+
+    const HOSTNAME = '/thinkphp/public/index.php'; //const声明变量,习惯用大写，这是一个常量
+
+    layui.use(['table','layer'], function(){
+        let table = layui.table,layer = layui.layer,$ =layui.jquery;
+
+        //第一个实例
+        table.render({
+            elem: '#demo'//渲染地址id为demo的 table
+            ,url: HOSTNAME +'/admin/cate/query' //数据接口
+            // ,page: true //开启分页
+            ,cols: [[ //表头
+                //field 字段
+                {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
+                ,{field: 'cname', title: '分类名称',edit: 'text'}
+                ,{field: 'num', title: '分类编号',edit: 'text', sort: true,}
+                ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
+            ]]
+        });
+
+        table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+            var data = obj.data; //获得当前行数据
+            var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+            var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+
+          if(layEvent === 'del'){ //删除
+                layer.confirm('真的删除这行么 (〃＞皿＜)', function(index){
+                    let qs = obj.data;
+                    layer.close(index);
+                    //向服务端发送删除指令
+                    let load = layer.load(3);
+                    $.ajax({
+                        url: HOSTNAME +'/admin/cate/delete',
+                        dataType:'json',
+                        data:qs,
+                        type:'POST',
+                        success:function(res){
+                            if(res.code === 200){
+                                layer.close(load);
+                                obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
+                                layer.open({
+                                    title:'太棒啦！(◕ᴗ◕✿)',
+                                    content:res.msg,
+                                    anim: 5
+                                });
+                            } else {
+                                layer.open({
+                                    title:'真可惜！(▼ヘ▼#)',
+                                    content:res.msg,
+                                    anim: 6
+                                });
+                            }
+                        },
+                    });
+                });
+            } /*else if(layEvent === 'edit'){ //编辑
+
+                //同步更新缓存对应的值
+                /!*  obj.update({
+                      username: '123'
+                      ,title: 'xxx'
+                  });*!/
+
+            } else if(layEvent === 'LAYTABLE_TIPS'){
+                layer.alert('Hi，头部工具栏扩展的右侧图标。');*/
+            // }
+        });
+
+        table.on('edit(test)', function(obj){
+            var value = obj.value //得到修改后的值
+                ,id = obj.data.id //得到所在行所有键值
+                ,field = obj.field; //得到字段
+            let load = layer.load(3);
+            $.ajax({
+                url: HOSTNAME +'/admin/cate/update',
+                dataType:'json',
+                data:{value,id,field},
+                type:'POST',
+                success:function(res){
+                    if(res.code === 200){
+                        layer.close(load);
+                        layer.open({
+                            title:'太棒啦！(◕ᴗ◕✿)',
+                            content:res.msg,
+                            anim: 5
+                        });
+                    } else {
+                        layer.open({
+                            title:'真可惜！(▼ヘ▼#)',
+                            content:res.msg,
+                            anim: 6
+                        });
+                    }
+                },
+            });
+            // layer.msg('[ID: '+ id +'] ' + field + ' 字段更改为：'+ value);
+        });
+
+
+    });
+</script>
+
+

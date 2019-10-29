@@ -1,0 +1,61 @@
+
+    <link rel="stylesheet" href="__CSS_PATH__news.css">
+{include file='public/header' title='$title' /}
+<style>
+    .detail a{
+        color:#666;
+    }
+    .news:hover{
+        color:red;
+    }
+    .news:hover a{
+        color:red;
+    }
+    .banner-img{
+        height:auto;
+    }
+</style>
+
+<!-- 顶部导航 开始 -->
+<div class="container">
+    <div class="row">
+        <!-- banner开始 -->
+        <div class="banner-img">
+            <img src="__IMG_PATH__news/banner.jpg" alt="">
+        </div>
+        <!-- banner结束 -->
+        <!-- 分割线开始 -->
+        <div class="aboutus">
+            <div class='line'></div>
+            <div class="guanyu">
+                <div class="zhongwen">新闻资讯</div>
+                <div class="yingwen">New</div>
+            </div>
+            <div class="line"></div>
+        </div>
+        <!-- 分割线结束 -->
+        <!-- 新闻开始 -->
+
+        {volist name='news' id='vo'}
+        <div class="news">
+            <div class="news-every" id="">
+                <div class="detail"><a href="/thinkphp/public/index.php/index/newschild/index?id=28&nid={$vo['nid']}">{$vo['ntitle']}</a></div>
+                <span>{$vo['create_time']}</span>
+            </div>
+        </div>
+        {/volist}
+
+
+        <!-- 隐藏页结束 -->
+        <!-- 底部图片开始 -->
+        <div class="container bottom">
+            <div class="banner-img">
+                <img src="__IMG_PATH__news/dibu-imgjpg.jpg" alt="">
+            </div>
+        </div>
+        <!-- 底部图片结束 -->
+    </div>
+</div>
+<!-- 站点地图开始 -->
+
+{include file='public/fooder' /}

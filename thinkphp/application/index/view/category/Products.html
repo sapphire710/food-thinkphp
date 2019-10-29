@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="__CSS_PATH__list.css">
+{include file='public/header' title='$title' /}
+
+<div class=" container ">
+    <!-- 头部轮播开始 -->
+    <div class=" banner ">
+        <div class=" banner-img ">
+            <img src=" __IMG_PATH__/list/十一早鸟.jpg " alt=" ">
+        </div>
+    </div>
+</div>
+<!-- 头部轮播结束 -->
+<!-- 关于开始 -->
+<div class=" container line-both ">
+    <div class=" aboutus ">
+        <div class='line'></div>
+        <div class=" guanyu ">
+            <div class=" zhongwen ">美食中心</div>
+            <div class=" yingwen ">Products</div>
+        </div>
+        <div class=" line "></div>
+    </div>
+</div>
+<!-- 关于结束 -->
+<!-- 列表开始 -->
+<div class=" container ">
+    <div class=" index-product ">
+        <div class=" guide ">
+            <ul class=" guide-box ">
+                {volist name='cate' id='o'}
+                <li class=" guide-smbox ">
+                    {$o['cname']}
+                </li>
+                {/volist}
+            </ul>
+            <a class=" contant-box ">
+                {volist name='cate' id='go'}
+                <div class="contant">
+                    {volist name="go['goods']" id='o'}
+                    <a href="/thinkphp/public/index.php/index/category/xiangqing?id=23&gid={$o['gid']}">
+                        <div class=" contant-imgs ">
+                            <img src="{$o['gthumb']} " alt=" ">
+                            <div class=" wenzis ">
+                                {$o['gname']}
+                            </div>
+                            <div class=" prices ">
+                                {$o['gsale']}
+                                <span>起</span>
+                            </div>
+                        </div>
+                    </a>
+                    {/volist}
+                </div>
+                {/volist}
+            </a>
+
+        </div>
+    </div>
+</div>
+<!-- 列表结束 -->
+<style>
+    .index-product{
+        height:auto;
+    }
+    .contant-imgs>img{
+        height:122px;
+        width:210px;
+    }
+</style>
+
+<!-- 站点地图开始 -->
+{include file='public/fooder' /}
+
+<script src="__JS_PATH__list.js "></script>

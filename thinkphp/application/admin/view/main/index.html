@@ -1,0 +1,211 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>景点管理系统</title>
+    <link rel="stylesheet" href="/thinkphp/public/static/css/layui.css">
+    <script src="/thinkphp/public/static/layui.js"></script>
+</head>
+<style>
+    .layui-tab{
+        position: relative;
+        width:100%;
+        height:calc(100% - 20px);
+    }
+    .layui-tab>.layui-tab-content{
+        position: absolute;
+        top:41px;
+        bottom: 0;
+        right:-10px;
+        width:100%;
+    }
+    .layui-tab-content>.layui-tab-item{
+        width:100%;
+        height:100%;
+    }
+</style>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">"三组小食堂"后台</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="">控制台</a></li>
+            <li class="layui-nav-item"><a href="">商品管理</a></li>
+            <li class="layui-nav-item"><a href="">用户</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">邮件管理</a></dd>
+                    <dd><a href="">消息管理</a></dd>
+                    <dd><a href="">授权管理</a></dd>
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    {$user}
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="/thinkphp/public/admin/login/index">退了</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black" style="width:200px;">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">导航管理</a>
+                    <dl class="layui-nav-child">
+                        <dd data-id="1_1" data-url="/thinkphp/public/admin/nav/openinsert"><a href="javascript:;">添加导航</a></dd>
+                        <dd data-id="1_2" data-url="/thinkphp/public/admin/nav/index"><a href="javascript:;">查看导航</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">美食分类</a>
+                    <dl class="layui-nav-child">
+                        <dd data-id="2_1" data-url="/thinkphp/public/admin/cate/openinsert"><a href="javascript:;">添加分类</a></dd>
+                        <dd data-id="2_2" data-url="/thinkphp/public/admin/cate/index"><a href="javascript:;">查看分类</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">美食管理</a>
+                    <dl class="layui-nav-child">
+                        <dd data-id="3_1" data-url="/thinkphp/public/admin/goods/openinsert"><a href="javascript:;">添加美食</a></dd>
+                        <dd data-id="3_2" data-url="/thinkphp/public/admin/goods/index"><a href="javascript:;">查看美食</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">新闻管理</a>
+                    <dl class="layui-nav-child">
+                        <dd data-id="4_1" data-url="/thinkphp/public/admin/news/openinsert"><a href="javascript:;">添加新闻</a></dd>
+                        <dd data-id="4_2" data-url="/thinkphp/public/admin/news/index"><a href="javascript:;">查看新闻</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">可视化界面</a>
+                    <dl class="layui-nav-child">
+                        <dd data-id="5_1" data-url="/thinkphp/public/admin/keshihua/index"><a href="javascript:;">可视化查看</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body" style="background:#F6F6F6;">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;width:100%;height:100%;box-sizing: border-box">
+
+            <div class="layui-tab" lay-filter="demo" lay-allowclose="true">
+                <ul class="layui-tab-title">
+                    <li  class="layui-this" lay-id="11">欢迎</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show"style="text-align:center;line-height:100px;font-size: 50px;color:#fff;">聊之旅官网后台页面<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——祁兽兽吖</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        © layui.com - 底部固定区域
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+    layui.use(['layer','element'],function(){
+        var $ = layui.jquery ,element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+        //触发事件
+        /*方法一：
+        $('dd').on('click',function(){
+            let title =$(this).children('a').html();  //$('a',this).html();
+            let id = $(this).data('id');
+            let arr=$('.layui-tab-title>li');
+            let k=0;
+            // $('li[lay-id]')
+            for(let i=0;i<arr.length;i++){
+                if(id===arr[i].attributes[0].value){
+                    //arr[i].attr('lay-id'); arr[i].getattrbute('lay-id');
+                    element.tabChange('demo',id);
+                    k=1;
+                }
+            }
+            if(k===0){
+                element.tabAdd('demo',{
+                    title:title,
+                    content:'123',
+                    id:id
+                });
+                element.tabChange('demo',id);
+            }
+        });*/
+        //方法二：
+        $('dd').on('click',function() {
+            let title = $(this).children('a').html();  //$('a',this).html();
+            let id = $(this).data('id');
+            let lis = $('.layui-tab-title>li');
+            let flag = false;
+            let arr = lis.map(function (index, element) {
+                return element.getAttribute('lay-id');
+            });
+            // flag = Array.from(arr).some(ele=>ele==id);
+            flag = Array.prototype.some.call(arr, ele => ele == id);//原型对象和继承
+
+            if (flag) {
+                element.tabChange('demo', id);
+            } else {
+                let urls = this.dataset.url;
+                element.tabAdd('demo', {
+                    title,
+                    content: `<iframe style="width:100%;height:100%;" frameborder="0" src="${urls}"></iframe>`,
+                    id
+                });
+                element.tabChange('demo', id);
+            }
+        })
+
+        /*var active = {
+            tabAdd: function(){
+                //新增一个Tab项
+                element.tabAdd('demo', {
+                    title: '新选项'+ (Math.random()*1000|0) //用于演示
+                    ,content: '内容'+ (Math.random()*1000|0)
+                    ,id: new Date().getTime() //实际使用一般是规定好的id，这里以时间戳模拟下
+                })
+            }
+            ,tabDelete: function(othis){
+                //删除指定Tab项
+                element.tabDelete('demo', '44'); //删除：“商品管理”
+                othis.addClass('layui-btn-disabled');
+            }
+            ,tabChange: function(){
+                //切换到指定Tab项
+                element.tabChange('demo', '22'); //切换到：用户管理
+            }
+        };
+        $('.site-demo-active').on('click', function(){
+            var othis = $(this), type = othis.data('type');
+            active[type] ? active[type].call(this, othis) : '';
+        });
+        //Hash地址的定位
+        var layid = location.hash.replace(/^#test=/, '');
+        element.tabChange('test', layid);
+        element.on('tab(test)', function(elem){
+            location.hash = 'test='+ $(this).attr('lay-id');
+        });*/
+    })
+</script>

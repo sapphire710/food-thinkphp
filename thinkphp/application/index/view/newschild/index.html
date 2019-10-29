@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="__CSS_PATH__news.css">
+{include file='public/header' title='$title' /}
+
+<style>
+    .banner-img{
+        height:auto;
+    }
+</style>
+
+<!-- 顶部导航 开始 -->
+<div class="container">
+    <div class="row">
+        <!-- banner开始 -->
+        <div class="banner-img">
+            <img src="__IMG_PATH__news/banner.jpg" alt="">
+        </div>
+        <!-- banner结束 -->
+        <!-- 分割线开始 -->
+        <div class="aboutus">
+            <div class='line'></div>
+            <div class="guanyu">
+                <div class="zhongwen">新闻资讯</div>
+                <div class="yingwen">News</div>
+            </div>
+            <div class="line"></div>
+        </div>
+        <!-- 分割线结束 -->
+        <!-- 新闻开始 -->
+
+            <!-- 隐藏页开始 -->
+
+
+            <div class="hidden-news" style="display: block;">
+
+                <h2>{$newschild['ntitle']}</h2>
+                <div class="fabusj">{$newschild['create_time']}&nbsp;&nbsp;&nbsp;{$newschild['nname']}</div>
+                <p>
+                    {$newschild['ncontent']}
+                </p>
+
+
+                <div style="width:100%;">
+                    <div style="float: left;">上一篇：<a href="/thinkphp/public/index.php/index/newschild/index?id=28&nid={$id1}">{$ntitle1}</a></div>
+                    <div style="float: right;">下一篇：<a href="/thinkphp/public/index.php/index/newschild/index?id=28&nid={$id2}">{$ntitle2}</a></div>
+                </div>
+
+            </div>
+
+
+
+
+        <!-- 隐藏页结束 -->
+        <!-- 底部图片开始 -->
+        <div class="container bottom">
+            <div class="banner-img">
+                <img src="__IMG_PATH__news/dibu-imgjpg.jpg" alt="">
+            </div>
+        </div>
+        <!-- 底部图片结束 -->
+    </div>
+</div>
+<!-- 站点地图开始 -->
+{include file='public/fooder' /}

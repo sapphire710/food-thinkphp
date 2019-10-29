@@ -1,0 +1,216 @@
+{include file="Public/header" title="首页" /}
+    <link rel="stylesheet" href="__CSS_PATH__onlineAppointment.css">
+
+    <div class="main">
+        <!-- 图片开始 -->
+        <div class="container conten">
+            <div class="row">
+                <div class="main-img">
+                    <img src="__IMG_PATH__OnlineBooking/banner.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <!-- 图片结束 -->
+        <!-- 标题开始 -->
+        <div class="container">
+            <div class="row">
+                <div class="main-tittle">
+                    <div class="main-tittle-left ">
+
+                    </div>
+                    <div class="main-tittle-font ">
+                        <dic class="tiittle-cn">
+                            在线预约
+                        </dic>
+                        <div class="tittle-en">
+                            <span>Online&nbsp;Appointment</span>
+                        </div>
+                    </div>
+                    <div class="main-tittle-right">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- 标题结束 -->
+        <!-- 表单开始 -->
+        <div class="main-form">
+            <form action=javascrip:;>
+                <div class="container ">
+                    <div class="row form-box">
+                        <div class="form-balank"></div>
+                        <div class="form-content">
+                            <div class="form-font">
+                                <div class="form-left">
+                                    预约服务：
+                                </div>
+                                <div class="form-list">
+                                    <select name="service" id="service">
+                                        <option value="境内游">包厢</option>
+                                        <option value="境外游">小桌</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-font">
+                                <div class="form-left">
+                                    预约日期：
+                                </div>
+                                <div class="form-list form-data">
+                                    <select class="dat-year" name="datyear" id="datyear">
+                                        <option value="">年</option>
+                                    </select>
+                                    <select class="dat-mouth" name="datmouth" id="datmouth">
+                                        <option value="">月</option>
+                                    </select>
+                                    <select class="dat-data" name="datdata" id="datdata">
+                                        <option value="">日</option>
+                                    </select>
+                                    <input type="date" id="data-img" class="data-img" style="border: none">
+                                    <div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tishi">
+                                <div class="font-tishi data-font-tishi">
+                                    ! 这是一个必填项哦
+                                </div>
+                            </div>
+                            <div class="form-font">
+                                <div class=" form-left">
+                                    您的姓名：
+                                </div>
+                                <div class="form-list uese-name">
+                                    <input class="uese-name uese-name1" name="oname" type="text" placeholder="请输入您的姓名">
+                                </div>
+                            </div>
+                            <div class="tishi" style="display: block">
+                                <div class="font-tishi name-font-tishi">
+                                    ! 这是一个必填项哦
+                                </div>
+                            </div>
+                            <div class="form-font">
+                                <div class="form-left">
+                                    您的性别：
+                                </div>
+                                <div class="form-list user-sex">
+                                    <input type="radio" name="osex" id="sex-nan" value="男"> <span>男</span>
+                                    <input type="radio" name="osex" id="sex-nv" value="女"><span>女</span>
+                                </div>
+                            </div>
+                            <div class="tishi" style="display: block">
+                                <div class="font-tishi sex-font-tishi">
+                                    ! 这是一个必填项哦
+                                </div>
+                            </div>
+                            <div class="form-font">
+                                <div class=" form-left">
+                                    您的电话：
+                                </div>
+                                <div class="form-list uese-name">
+                                    <input class="uese-name uese-phone" type="number" name="ophone" placeholder="请输入您的手机号">
+                                </div>
+                            </div>
+                            <div class="tishi" style="display: block">
+                                <div class="font-tishi name-font-phone">
+                                    ! 这是一个必填项哦
+                                </div>
+                            </div>
+                            <div class="form-font form-textarea">
+                                <div class="form-left">
+                                    补充说明：
+                                </div>
+                                <div class="form-list uese-name">
+                                    <textarea class="uese-name font-buchong" name="oshow" id=""  placeholder="补充内容"></textarea>
+                                </div>
+                            </div>
+                            <div class="tishi" style="display: block">
+                                <div class="font-tishi buchong-font-tishi">
+                                    ! 这是一个必填项哦
+                                </div>
+                            </div>
+                            <div class="form-font">
+                                <div class="form-left">
+                                    验证码：
+                                </div>
+                                <div class="form-list uese-name">
+                                    <input class="uese-name yanzhen-font" name="ocode" type="text" placeholder="字母区分大小写">
+                                </div>
+                            </div>
+                            <div class="tishi" style="display: block">
+                                <div class="font-tishi yanzhen-font-tishi">
+                                    ! 这是一个必填项哦
+                                </div>
+                            </div>
+                            <div class="form-font form-auth-code">
+                                <div class="form-left">
+                                </div>
+
+                                <div class="form-user-code-img">
+                                    <canvas class="form-list form-user-code" onclick="dj()">
+                                </canvas>
+                                </div>
+                            </div>
+                            <div class="form-font ">
+                                <div class="form-left main-user-submit">
+                                    <input type="submit" id="aaa" class="user-submit" value="提交" />
+                                </div>
+                                <div class="form-list">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-balank"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- 表单结束 -->
+    </div>
+
+{include file='public/fooder' /}
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script>
+
+    $('form').on('submit', function (e) {
+        e.preventDefault();
+        let qs = $(this).serialize().trim();
+        $.ajax({
+            url: '../admin/onlineinsert.php',
+            type: 'POST',
+            dataType: 'json',
+            data: qs,
+            context: this,
+            success: function (res) {
+                if (res.code === 200) {
+                    this.reset();//this指向ajax的配置项所以的加context
+                    alert(res.msg);
+                } else {
+                    alert(res.msg);
+                }
+            }
+        })
+    })
+
+   /* $("#aaa").on('click',function(e){
+        e.preventDefault();
+        let service = $("#service option:selected").val();
+        let datyear = $("#datyear").val();
+        let datmouth = $("#datmouth").val();
+        let datdata = $("#datdata").val();
+        $.ajax({
+            url:'onlineinsert.php',
+            dataType:'json',
+            data:{service},
+            type:'POST',
+            success:function(res){
+
+
+            },
+        })
+    });
+*/
+</script>
+
+
+<script src="__JS_PATH__onlineAppointment.js"></script>
+

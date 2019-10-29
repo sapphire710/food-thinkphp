@@ -1,0 +1,97 @@
+<link rel="stylesheet" href="__CSS_PATH__list.css">
+{include file='public/header' title='$title' /}
+
+    <link rel="stylesheet" href="__CSS_PATH__xiangqing.css">
+
+<style>
+    .banner img{
+        height:auto;
+    }
+</style>
+
+<!-- 头部结束 -->
+<!-- 轮播图开始 -->
+<div class="contsiner">
+    <div class="row">
+        <div class="banner col-lg-12">
+            <img src="__IMG_PATH__xiangqing/banner.jpg" alt="">
+        </div>
+    </div>
+</div>
+<!-- 轮播图结束 -->
+<!-- 大字开始 -->
+
+
+
+<div class="contsiner">
+    <div class="row">
+        <div class="hezi col-lg-12">
+            <div class="zi col-lg-12">{$goods['gname']}</div>
+        </div>
+    </div>
+</div>
+<!-- 大字结束 -->
+<!-- 正文开始 -->
+<div class="contont ">
+    <div class="container">
+        <div class="row">
+
+            <div class="contont1">
+                <div class="kontont left col-lg-6 col-md-12 col-xs-12">
+                    <div class="left-kuang">
+                        <div class="img-box">
+                            <ul class="img-ul">
+
+                                {volist name='banner' id='o'}
+                                <li class="tupian"><img style="border-radius: 10px" src="{$o}" alt=""></li>
+                                {/volist}
+                            </ul>
+                        </div>
+
+                        <div class="btn btn-left"></div>
+                        <div class="btn btn-right"></div>
+                        <!-- <div class="dot"> -->
+                        <div class="dot-dot">
+                            <div class="diandian"></div>
+                            <div class="diandian"></div>
+                            <div class="diandian"></div>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                </div>
+                <div class="kontont right col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                    <div class="scj"> <span>市场价:￥{$goods['gmprice']}</span></div>
+
+                    <div class="lsj"><span>零售价
+                            <stuly class="qwe">
+                                <strong style="color: red;">￥{$goods['gsale']}</strong>
+                        </stuly>
+                        </span>
+                    </div>
+                    <div class="ls"><span>剩余票数：{$goods['gstock']}</span></div>
+                </div>
+            </div>
+            <div class="goods col-md-12 col-sm-12 col-xs-12">
+                <div class="sp"><span>美食介绍</span></div>
+                <div class="sp1">
+                    {$goods['gdetail']}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<div style="width:100%;">
+    <div style="float: left;">上一篇：<a href="/thinkphp/public/index.php/index/category/xiangqing?id=23&gid={$gid1}">{$gname}</a> </div>
+    <div style="float: right;">下一篇：<a href="/thinkphp/public/index.php/index/category/xiangqing?id=23&gid={$gids}">{$gnames}</a></div>
+</div>
+
+
+
+<!-- 站点地图开始 -->
+
+{include file='public/fooder' /}
+<!--<script src="../static/js/xiangqing2.js"></script>-->
+<script src="__JS_PATH__xiangqing.js"></script>

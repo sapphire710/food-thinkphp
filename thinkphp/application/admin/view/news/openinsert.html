@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>添加新闻</title>
+    <link rel="stylesheet" href="/thinkphp/public/static/css/layui.css">
+    <script src="/thinkphp/public/static/layui.js"></script>
+</head>
+<body>
+<form class="layui-form"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">新闻名称</label>
+        <div class="layui-input-block">
+            <input type="text" lay-verify="nname|cn" name="ntitle" placeholder="请输入新闻名称" autocomplete="off"
+                   class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">作者</label>
+        <div class="layui-input-block">
+            <input type="text" lay-verify="len" name="nname" placeholder="请输入作者" autocomplete="off"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">新闻介绍</label>
+        <div class="layui-input-block">
+            <textarea id="demotext" style="display: none;" placeholder="请输入内容" class="layui-textarea" name="ncontent"></textarea>
+            <!--<textarea placeholder="请输入内容" class="layui-textarea" name="gdetail"></textarea>-->
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="go">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+
+</form>
+</body>
+</html>
+
+<script>
+    layui.use(['form', 'layer', 'upload','layedit'], function () {
+        let {form, $, upload, layer, layedit} = layui;//解构赋值
+        // let form = layui.form, $ = layui.jquery, layer = layui.layer, upload = layui.upload;
+
+        //富文本
+        // layedit.build('demotext'); //建立编辑器
+        var index = layedit.build(demotext);
+
+        //表单提交
+        form.on('submit(go)', function (data) {
+//补充：this用到的地方函数、事件、构造函数、方法
+// var声明的变量，在声明前调用，会显示undefined。let声明的变量在前面调用会报错
+// var声明的变量会挂在全局（挂钩）window.num
+// 变量的作用域由它的定义决定
+
+            let { field,form} = data;
+            delete field.file;
+            field.ncontent = layedit.getContent(index);
+            $.ajax({
+                url: '/thinkphp/public/index.php/admin/news/insert',
+                dataType: 'json',
+                data: field,
+                type: 'POST',
+                success: function (res) {
+                    if (res.code === 200) {
+                        layer.open({
+                            title: '太棒啦！(◕ᴗ◕✿)',
+                            content: res.msg,
+                            anim: 5
+                        });
+                        form.reset();//删除表单数据
+                    } else {
+                        layer.open({
+                            title: '真可惜！(▼ヘ▼#)',
+                            content: res.msg,
+                            anim: 4
+                        });
+                    }
+                },
+            });
+            return false;
+        });
+
+    })
+
+
+</script>
